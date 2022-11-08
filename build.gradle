@@ -44,26 +44,3 @@ subprojects {
         useJUnitPlatform()
     }
 }
-
-project(':v-wms-auth') {
-    dependencies {
-        implementation project(':v-wms-common')
-    }
-}
-
-project(':v-wms-biz') {
-    dependencies {
-        implementation project(':v-wms-common')
-    }
-}
-
-project(':v-wms-eureka') {
-    dependencies {
-        implementation project(':v-wms-common')
-    }
-}
-project(':v-wms-gateway') {
-    dependencies {
-        implementation project(':v-wms-common')
-    }
-}
