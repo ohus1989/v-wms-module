@@ -66,3 +66,4 @@ project(':v-wms-gateway') {
     dependencies {
         compile project(':v-wms-common')
     }
+}
