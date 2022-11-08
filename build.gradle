@@ -44,4 +44,26 @@ subprojects {
         useJUnitPlatform()
     }
 }
-// 테스트
+
+project(':v-wms-auth') {
+    dependencies {
+        compile project(':v-wms-common')
+    }
+}
+
+project(':v-wms-biz') {
+    dependencies {
+        compile project(':v-wms-common')
+    }
+}
+
+project(':v-wms-eureka') {
+    dependencies {
+        compile project(':v-wms-common')
+    }
+}
+project(':v-wms-gateway') {
+    dependencies {
+        compile project(':v-wms-common')
+    }
+}
