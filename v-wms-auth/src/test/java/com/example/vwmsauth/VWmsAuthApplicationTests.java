@@ -1,4 +1,4 @@
-package com.hdg.vwmsauth;
+package com.example.vwmsauth;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

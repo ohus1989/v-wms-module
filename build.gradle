@@ -4,24 +4,19 @@ plugins {
     id 'java'
 }
 
-
-repositories {
-    mavenCentral()
-}
-
-bootJar.enabled = false
-
 subprojects {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java'
+
     group = 'com.hdg'
-    version = '0.0.1-SNAPSHOT'
+    version = '1.0.0'
     sourceCompatibility = '11'
 
-    apply plugin: 'java'
-    // build.gradle에서 api() 를 사용하려면 java-library 사용
-    apply plugin: 'java-library'
-    apply plugin: 'org.springframework.boot'
-    // spring boot dependency를 사용하여 사용중인 부트 버전에서 자동으로 의존성을 가져온다.
-    apply plugin: 'io.spring.dependency-management'
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    tasks.withType(JavaCompile){
+        options.encoding = 'UTF-8'
+    }
 
     configurations {
         compileOnly {
@@ -32,15 +27,37 @@ subprojects {
     repositories {
         mavenCentral()
     }
-
-    // 관리하는 모듈에 공통 dependencies
+    //각각의 모듈에 공통으로 들어갈 dependency
     dependencies {
+        implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter'
+        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+        testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
 
     test {
         useJUnitPlatform()
     }
 }
+//project(':v-wms-auth') {
+//    dependencies {
+//        implementation project(':v-wms-common')
+//    }
+//}
+//project(':v-wms-biz') {
+//    dependencies {
+//        implementation project(':v-wms-common')
+//    }
+//}
+project(':v-wms-eureka') {
+    dependencies {
+        implementation project(':v-wms-common')
+    }
+}
+//project(':v-wms-gateway') {
+//    dependencies {
+//        implementation project(':v-wms-common')
+//    }
+//}
