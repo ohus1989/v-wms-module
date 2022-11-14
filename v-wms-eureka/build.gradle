@@ -12,14 +12,21 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    implementation project(':v-wms-common')
-    // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+ext {
+    set('springCloudVersion', "2021.0.3")
 }
 
-tasks.named('test') {
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+    testImplementation'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+test {
     useJUnitPlatform()
 }

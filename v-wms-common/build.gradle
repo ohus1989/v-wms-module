@@ -12,15 +12,19 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
-
-    runtimeOnly 'org.postgresql:postgresql'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+// 설정 부분
+bootJar {
+    enabled = false
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
+jar {
+    enabled = true
+}
+//
+
+dependencies {
+    implementation  'org.springframework.boot:spring-boot-starter'
+    implementation  'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+
+    runtimeOnly 'org.postgresql:postgresql'
 }
