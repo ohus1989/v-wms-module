@@ -1,15 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <button v-on:click="getData">
+axios test
+    </button>
+
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  methods:{
+    getData(){
+      axios.get("/v1/basicbiz/user/").then((res)=>{
+        console.log(res);
+      })
+    }
   }
 }
 </script>
