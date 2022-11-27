@@ -1,9 +1,13 @@
 <template>
-  <div>
+  <div id="app">
+    <router-link to="/home">main</router-link>
+    <router-link to="/info">info</router-link>
+    <!-- convert -->
+    <!-- <a href="#/main" class="">main</a> -->
+    <router-view></router-view>
     <button v-on:click="getData">
-axios test
+      axios test
     </button>
-
   </div>
 </template>
 
